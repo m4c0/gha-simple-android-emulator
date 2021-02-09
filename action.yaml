@@ -1,0 +1,10 @@
+name: 'Simple Android Emulator'
+description: 'Manages a Android emulator instance'
+inputs:
+  sdk:
+    description: "Name of the SDK to use in the AVD. This is the -k argument to avdmanager"
+    required: true
+runs:
+  using: node12
+  main: main.js
+
