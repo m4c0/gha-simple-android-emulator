@@ -14,7 +14,7 @@ async function run() {
     return exec.exec('bash', ['-c', `echo | ${cli_root}/avdmanager create avd -n test -k '${sdk}'`]);
   });
   await core.group('Starting emulator', async () => {
-    exec.exec(`${root}/emulator/emulator`, ['-avd', 'test', '-no-window', '-no-audio', '-no-snapshot', '-no-boot-anim', '-no-accel']);
+    await exec.exec('bash', ['-c', `nohup ${root}/emulator/emulator -avd test -no-window -no-audio -no-snapshot -no-boot-anim -no-accel &`], { detached: true });
     return exec.exec(`${root}/platform-tools/adb`, ['wait-for-device']);
   });
 }
